@@ -1,0 +1,293 @@
+/*
+	author:linjie1@kingsoft.com
+	modified date : 2015/9/9
+*/
+
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+.floatleft { float: left; }
+.floatright { float: right; }
+.center { text-align: center; }
+.clearboth { clear: both; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+a { text-decoration: none; outline: none; }
+ul, li { list-style:none}
+table { border-collapse: collapse; border-spacing: 0; }
+select, select:focus, a:focus, input:focus, select:focus, textarea:focus, a, input, select, textarea, button, a::-moz-focus-inner, input::-moz-focus-inner, select::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
+	outline: none;
+	outline-width: 0;
+}
+	/* 禁用iPhone中Safari的字号自动调整 */
+img, object  { max-width: 100%; height: auto; width: auto; /* ie8 */ }
+.video embed, .video object, .video iframe { width: 100%; height: auto; }
+body { background: #e3d6c6; line-height: 1; font-family: 'IowanOldStyle-Bold', arial, helvetica, sans-serif; font-size: 62.5%; color: #4c4c4c; }
+p { line-height: 2; }
+a { color: #4c4c4c; }
+a:hover { color: #4c4c4c; }
+a:visited {color: #4c4c4c;}
+h1 { font-size: 3em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.4em; }
+p {font-size: 1em; }
+small { font-size: 0.6em; }
+a {-webkit-tap-highlight-color: rgba(255,255,255,0); }
+/* OPERA FIX */
+html,body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+@media screen and (min-width:640px){
+	.area{
+		width: 640px;
+		margin:0 auto;
+	}
+}
+@media screen and (max-width:635px){
+	.area{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width:100%;
+		height:100%;
+		margin:0 auto;
+		-webkit-overflow-scrolling: touch;
+		transition: left .5s ease-in-out;
+		-webkit-transition: left .5s ease-in-out;
+	}
+}
+.aside{
+	position: absolute;
+	left: -30%;
+	top: 0;
+	width: 30%;
+	height: 100%;
+	background: #e3d6c6;
+	transition: left .5s ease-in-out;
+	-webkit-transition: left .5s ease-in-out;
+}
+.aside.active{
+	left: 0;
+	transition: left .5s ease-in-out;
+	-webkit-transition: left .5s ease-in-out;
+}
+.aside ul {
+	width: 100%;
+	list-style: none;
+}
+.aside ul li {
+	width: 80%;
+	height: 4em;
+	line-height: 4em;
+	margin: 2em auto;
+	border: 2px solid rgba(0,0,0,0.5);
+	border-radius: 5px;
+	text-align: center;
+}
+.aside ul li a{
+	font-size: 1.8em;
+}
+.area.active{
+	left: 30%;
+	width: 70%;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+	transition: left .5s ease-in-out;
+	-webkit-transition: left .5s ease-in-out;
+}
+.area2{
+	width: 100%;
+	height: 100%;
+	background: #ebe3e0;
+}
+.area2.active{
+	-webkit-filter:blur(3px);
+}
+.area.active .area2{
+	transform: rotateY(30deg);
+	-webkit-transform: rotateY(30deg);
+}
+header {
+	width: 100%;
+	height: 50px;
+	background: #fff;
+	text-align: center;
+}
+
+.hamburger {
+	float: left;
+	font-size: 2em;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	padding: 12px 0 12px 1em;
+	cursor: pointer;
+	transition: transform .2s ease-in-out;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+	vertical-align: middle;
+	border: 0 none;
+	background: transparent;
+}
+.hamburger:before,
+.hamburger:after {
+	content: "";
+}
+.hamburger:before,
+.hamburger .icon,
+.hamburger:after {
+	display: block;
+	width: 100%;
+	height: .2em;
+	margin: 0 0 .2em;
+	transition: transform .2s ease-in-out;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+	border-radius: .05em;
+	background: #596c7d;
+}
+.hamburger.active:before,
+.hamburger.active .icon,
+.hamburger.active:after {
+	background: #2c3e50;
+}
+/*中间横杠消失*/
+.hamburger.hamburger-cancel.active .icon {
+	transform: scale(0);
+	-webkit-transform: scale(0);
+}
+/*上面的横杠斜135度*/
+/*旋转的同时还要在Y轴上做变化，否则距离有点远。*/
+.hamburger.hamburger-cancel.active:before {
+	transform: translateY(.4em) rotate(135deg);
+	-webkit-transform: translateY(.4em) rotate(135deg);
+}
+/*下面的横杠斜-135度*/
+.hamburger.hamburger-cancel.active:after {
+	transform: translateY(-.4em) rotate(-135deg);
+	-webkit-transform: translateY(-.4em) rotate(-135deg);
+}
+header h1 {
+	font-size: 2.6em;
+	line-height: 50px;
+}
+.area section{
+	width: 100%;
+	margin: 0.5em 0 1.5em;
+}
+.area section:nth-child(1){
+	background: #fff;
+}
+.area section h1{
+	width: 100%;
+	font-size: 2.4em;
+	padding: 0.8em 1em;
+	box-sizing: border-box;
+	-wekit-box-sizing: border-box;
+	border-bottom: 1px solid #fff;
+}
+.tasks{
+	width: 100%;
+}
+.item {
+	position: relative;
+	width: 100%;
+	height: 55px;
+	font-size: 1.6em;
+	border-bottom: 1px solid #fff;
+	line-height: 55px;
+	text-align: center;
+	overflow: hidden;
+}
+.item a{
+	display: inline-block;
+	height: 100%;
+}
+.item_text {
+	width: 100%;
+}
+.item_link{
+	position: absolute;
+	top: 0;
+	right: -30%;
+	width: 30%;
+	background: #fff;
+	transition: right .2s linear;
+	-webkit-transition: right .2s linear;
+}
+.done .tasks{
+	background: #eee;
+}
+.add {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	width: 45px;
+	height: 45px;
+	border-radius: 45px;
+	background: #fff;
+	text-align: center;
+	line-height: 45px;
+}
+.add.active {
+	box-shadow: 0 0 5px #000;
+}
+.add a {
+	font-size: 2.6em;
+}
+
+.pop {
+	display: none;
+	position: absolute;
+	bottom: 40%;
+	left: 14%;
+	width: 70%;
+	text-align: center;
+}
+.pop.active{
+	display: block;
+	-webkit-animation: bounce1 1s ease-in-out;
+}
+@-webkit-keyframes bounce1{
+	0%{
+		bottom: 0;
+		left: 45%;
+		-webkit-transform: scale(0.2,0.2);
+	}
+	30%{
+		bottom: 30%;
+		left: 30%;
+		-webkit-transform: scale(0.5,0.5);
+	}
+	100%{
+		bottom: 40%;
+		left: 14%;
+		-webkit-transform: scale(1,1);
+	}
+}
+
+.input{
+	width: 100%;
+	height: 30px;
+	border: none;
+	text-indent: 10px;
+	-webkit-appearance: none;
+	background: #e3d6c6;
+	border-bottom: 2px solid rgba(0,0,0,0.4);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45);
+	font-size: 1.4em;
+}
+.submit {
+	width: 50%;
+	height: 30px;
+	margin-top: 10px;
+	font-size: 1.8em;
+	box-shadow: 0 1px 3px rgba(255,255,255,0.25), 0 0px 6px rgba(0,0,0,0.1) inset;
+	border: none;
+	background: #e3d6c6;
+	font-family: 'IowanOldStyle-Bold';
+	-webkit-appearance: none;
+	color: #4c4c4c;
+}
