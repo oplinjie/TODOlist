@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TODOlist</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection"content="telephone=no, email=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+	<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+	<!-- 启用360浏览器的极速模式(webkit) -->
+	<meta name="renderer" content="webkit">
+	<!-- 避免IE使用兼容模式 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+	<meta name="HandheldFriendly" content="true">
+	<!-- 微软的老式浏览器 -->
+	<meta name="MobileOptimized" content="320">
+	<!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<!-- UC应用模式 -->
+	<meta name="browsermode" content="application">
+	<!-- QQ应用模式 -->
+	<meta name="x5-page-mode" content="app">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<!-- 适应移动端end -->
+	<link rel="apple-touch-icon-precomposed" href="assets/images/clearicon.jpg" />
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="" /> -->
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="" /> -->
+	<!-- <link rel="apple-touch-startup-image" href="/img/startup.png" /> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+</head>
+<body>
+	<div class="aside">
+		<ul>
+			<li><a href="javascript:;">Daily</a></li>
+			<li><a href="javascript:;">Weekly</a></li>
+		</ul>
+	</div>
+	<div class="area">
+		<div class="area2">
+			<header class="clearfix">
+				<a class="hamburger hamburger-cancel" href="javascript:;"><span class="icon"></span></a>
+				<h1>TODOlist</h1>
+			</header>
+			<section class="doing">
+				<h1>Doing</h1>
+				<ul class="tasks">
+				</ul>
+			</section>
+			<section class="done">
+				<h1>Done</h1>
+				<ul class="tasks">
+				</ul>
+			</section>
+		</div>
+		<div class="add">
+			<a><span>+</span></a>
+		</div>
+		<div class="pop">
+			<form id="myform" class="myform" method="post" action="javascript:;">
+				<input type="text" name="input" class="input" id="input" placeholder="add your ToDo" autocomplete="off" />
+				<input type="submit" name="submit" class="submit" value="start" />
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/js/zepto.js"></script>
+	<script type="text/javascript" src="assets/js/index.js"></script>
+</body>
+</html>
