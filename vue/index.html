@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TODOlist</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection"content="telephone=no, email=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+	<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+	<!-- 适应移动端end -->
+	<link rel="apple-touch-icon-precomposed" href="assets/images/clearicon.jpg" />
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+</head>
+<body>
+	<div class="aside">
+		<ul>
+			<li><a href="javascript:;">Daily</a></li>
+			<li><a href="javascript:;">Weekly</a></li>
+		</ul>
+	</div>
+	<div class="area">
+		<div class="area2">
+			<header class="clearfix">
+				<a class="hamburger hamburger-cancel" href="javascript:;"><span class="icon"></span></a>
+				<h1>TODOlist</h1>
+			</header>
+			<section class="doing">
+				<h1>Doing</h1>
+				<ul class="tasks">
+					<li class="item" data-num="{{ $index }}" v-dbtap="finDoing($index, todo.text)" v-swipe="" v-for="todo in doing">
+						<a class="item_text" href="javascript:;">{{ todo.text }}</a>
+						<a class="item_link" href="javascript:;" @click="removeTodo($index)">×</a>
+    				</li>
+				</ul>
+			</section>
+			<section class="done">
+				<h1>Done</h1>
+				<ul class="tasks">
+					<li class="item" v-swipe="" v-for="todo in done">
+						<a class="item_text" href="javascript:;">{{ todo.text }}</a>
+						<a class="item_link" href="javascript:;" @click="removeDone($index)">×</a>
+    				</li>
+				</ul>
+			</section>
+		</div>
+		<div class="add">
+			<a><span>+</span></a>
+		</div>
+		<div class="pop">
+			<form id="myform" class="myform" method="post" action="javascript:;" v-on:submit.prevent="addTodo">
+				<input type="text" name="input" class="input" id="input" placeholder="add your ToDo" autocomplete="off" v-model="new" />
+				<input type="submit" name="submit" class="submit" value="start" v-on:click="addTodo" />
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="assets/js/zepto.js"></script>
+	<script type="text/javascript" src="assets/js/vue.min.js"></script>
+	<script type="text/javascript" src="assets/js/index.js"></script>
+</body>
+</html>
